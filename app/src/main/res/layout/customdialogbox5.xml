@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Message"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/whatsappmessage1"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_below="@+id/text"
+       android:hint="Type Message.."
+        android:inputType="textMultiLine"
+        android:background="@drawable/edittextanimation"
+        android:layout_margin="1dp"
+        android:padding="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:textColor="#000000" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_below="@+id/whatsappmessage1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/dialogButtonwhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/whatsapp"
+            android:background="@drawable/button_border"
+            android:layout_weight="1"
+            android:layout_margin="1dp"
+            />
+
+        <ImageButton
+            android:id="@+id/dialogButtonmessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/message"
+            android:background="@drawable/button_border"
+            android:layout_weight="1"
+            android:layout_margin="1dp"
+            />
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/whatsappmessage1"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="2">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/dialogButtonmessage"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="2dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/whatsapp"-->
+            <!--android:padding="5dp"-->
+            <!--android:text=" Cancle "-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16dp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/dialogButtonwhatsapp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/whatsapp"-->
+            <!--android:padding="5dp"-->
+            <!--android:text=" Send "-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16dp" />-->
+
+    <!--</LinearLayout>-->
+
+</RelativeLayout>
+

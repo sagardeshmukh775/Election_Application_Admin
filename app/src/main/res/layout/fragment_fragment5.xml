@@ -1,0 +1,106 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:background="@color/white"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="33"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/btn_pl"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/input_register"
+                android:text="Laminate Floor"
+                android:layout_margin="2.5dp"
+                android:padding="5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/btn_hl"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorPrimary"
+                android:text="Natural Floor"
+                android:layout_margin="2.5dp"
+                android:padding="5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="33"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/btn_ml"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/input_register"
+                android:text="Decking Floor"
+                android:layout_margin="2.5dp"
+                android:padding="5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/btn_tp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorPrimary"
+                android:text="Viny Floor"
+                android:layout_margin="2.5dp"
+                android:padding="5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="33"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/btn_bt"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/input_register"
+                android:text="Vaterproof floor"
+                android:padding="5dp"
+                android:layout_margin="2.5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/btn_dl"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorPrimary"
+                android:text="Artificial Grass"
+                android:layout_margin="2.5dp"
+                android:padding="5dp"
+                android:layout_weight="50"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

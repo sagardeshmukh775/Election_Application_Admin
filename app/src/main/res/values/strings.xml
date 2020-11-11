@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Election Application</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="dismiss">dismiss</string>
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="remove_user">Remove user</string>
+    <string name="new_pass">New Password</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered here.</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="action_example">Example action</string>
+
+
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play Next</string>
+    <string name="backdrop_title">LOVE MUSIC</string>
+    <string name="backdrop_subtitle">This season top 20 albums</string>
+
+    <string name="Company_Profile">COMPANY PROFILE :
+Samar Floor is one of the premier brands in imported wooden floorings and accessories. Based in Pune and with more than 15 years of experience, Samar Floor has come a long way in establishing itself as a reputed solution provider for wooden floors. It has earned the trust of countless customers and dealers alike. Associated with leading brands that are recognized and respected by the best in Indian Interior designing professionals, Samar Floor is a trusted name in the industry whose clientele includes leading corporate groups, hotels, builders and retailers. Having acquired expertise over the years we have diversified to fulfill the increasing demand for specialized floors. With an extensive range of laminated wooden floor, engineered flooring, solid wood flooring, deck and sports flooring, rubber tiles, vinyl sheets, carpet tiles, artificial grass, waterproof floors the company offers the most comprehensive alternate flooring solutions.</string>
+
+    <string name="job_profile">JOB PROFILE :
+Specialists in installations of wood floors and claddings, we at Samar Floor have been working throughout western India for over 15 years. We are involved in every aspect of the process, from meeting with the client to the final finishing details. Our company assures the highest level of workmanship and customer service.We offer a wide variety of wooden floors, to suit anything from small apartments, outdoor terraces to sprung floors in gymnasiums. We can create a new floor, overlay an old floor, or repair or extend an existing floor. Along with polyurethane finishes, we also offer oils, waxes and color stains to add an element of difference. Experienced in both commercial and residential settings, we work with architects and designers as well as individual clients. We supply a wide range of solid timber flooring (both tongue and groove, and parquet). These can be finished by applying stains from pale whitewashes to dark chocolate brown/black and everything in between.
+
+We also supply an extensive range of quality prefinished engineered flooring, covering a wide selection of timber colors and finishes. The allure of laminate flooring lies not only in its representation of real hardwood and its incredible durability, but also in the ease with which these floors are installed and maintained. Our laminate flooring is available in a plethora of styles and designs.Our Wooden Floors are committed to being eco-friendly. We take great pride in the quality of both our materials and workmanship.After discussing your options and requirements with you, our comprehensive quotes leave nothing to surprise and we aim to work in with your building budget. Each installation comes with our warrantee and our after sales service means we are able to remedy any problems that occur.We at SAMAR AGENCIES enjoy the challenge of the new and interesting projects we undertake. The large varieties of projects we have worked on over the years are testament to our high standards and quality of workmanship.</string>
+    <string name="title_activity_cropimage">Cropimage</string>
+
+    <string name="reg_member">Member Registration</string>
+    <string name="mem_details">Member Details</string>
+    <string name="mem_ward">WARD NUMBER</string>
+    <string name="mem_name">NAME</string>
+    <string name="mem_age">AGE</string>
+    <string name="mem_dob">D.O.B.</string>
+    <string name="mem_education">EDUCATION</string>
+    <string name="mem_occupation">OCCUPATION</string>
+    <string name="mem_tempaddress">TEMPORARY ADDRESS</string>
+    <string name="mem_peraddress">PERMANENT ADDRESS</string>
+    <string name="mem_curaddress">CURRENT ADDRESS</string>
+    <string name="mem_contact">CONTACT NUMBER</string>
+    <string name="mem_cast">CAST</string>
+    <string name="mem_gender">GENDER</string>
+    <string name="mem_male">Male</string>
+    <string name="mem_female">Female</string>
+    <string name="mem_voteridnumber">VOTER ID NUMBER</string>
+    <string name="mem_relative">RELATION</string>
+    <string name="mem_submit">SUBMIT</string>
+
+    <string name="rel_name">MAIN PERSON NAME</string>
+    <string name="rel_contact">CONTACT NUMBER</string>
+    <string name="rel_address">ADDRESS</string>
+    <string name="rel_details">Relation Details</string>
+    <string name="rel_form">RELATION FORM</string>
+
+    <string name="report_heading">Select from Date and to Date</string>
+    <string name="report_fromdate">From Date</string>
+    <string name="report_todate">To Date</string>
+    <string name="report_PDF">PDF</string>
+
+    <string name="generate_pdf_english">Generate PDF</string>
+
+    <string name="mem_report_details_english">MEMBER REPORT DETAILS</string>
+
+    <string name="mem_update">UPDATE</string>
+
+    <color name="orenge">#FF4500</color>
+    <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
+</resources>

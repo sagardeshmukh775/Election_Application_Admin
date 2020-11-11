@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Add_Post">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/memberregistration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Add"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/mainTextColor"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="POST"
+                android:textColor="@color/toolbar"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/postname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="POST NAME"
+                    android:padding="10dp"
+                    android:background="@drawable/edittextanimation"
+                    android:textColor="@color/input_register_bg"
+                    android:textColorHint="@color/input_login_hint" />
+
+                 <Spinner
+                     android:id="@+id/category"
+                     style="@style/Widget.AppCompat.Spinner.Underlined"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginRight="10dp"
+                     android:background="@drawable/edittextanimation"
+                     android:padding="10dp" />
+
+                 <com.google.android.material.textfield.TextInputLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <com.google.android.material.textfield.TextInputEditText
+                         android:id="@+id/description"
+                         android:layout_width="match_parent"
+                         android:layout_height="150dp"
+                         android:layout_marginTop="20dp"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:hint="POST DETAILS *"
+                         android:background="@drawable/edittextanimation"
+                         android:padding="10dp"
+                         android:gravity="top"
+                         android:scrollbars="vertical"
+                         android:inputType="textMultiLine"
+                         />
+                 </com.google.android.material.textfield.TextInputLayout>
+
+
+                 <ImageView
+                     android:id="@+id/imgPost"
+                     android:layout_width="150dp"
+                     android:layout_height="150dp"
+                     android:src="@drawable/instagram"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="15dp"/>
+
+                 <Button
+                     android:id="@+id/submit"
+                     android:layout_width="250dp"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="30dp"
+                     android:layout_marginRight="10dp"
+                     android:layout_marginBottom="30dp"
+                     android:background="@drawable/button1"
+                     android:gravity="center"
+                     android:text="POST"
+                     android:textColor="@color/white" />
+
+             </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Delete Product"
+        android:textSize="18dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="@color/album_title"
+        android:gravity="center"
+        android:layout_below="@+id/text"
+        android:background="@color/white"
+        />
+
+    <Button
+        android:id="@+id/dialogButtonOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" DELETE "
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:background="@color/album_title"
+        android:layout_below="@+id/text2"
+        />
+
+</RelativeLayout>
+
