@@ -52,7 +52,7 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
     private Button btnAdd;
     private Spinner spinnerCategory;
     private ImageView imgPost;
-
+//admin
     private static final int REQUEST_PICK_IMAGE = 1002;
     String image,Sdownloadurl,SpostName,SpostCategory,Spostdetails,SpostId;
     private Uri filePath;
