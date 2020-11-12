@@ -53,4 +53,11 @@ public class Constants {
     public static final DatabaseReference RELATIVES_TABLE_REF = DATABASE.getReference("Relations");
     public static final DatabaseReference POST_TABLE_REF = DATABASE.getReference("Posts");
 
+    public static final String CAT_SOCIAL = "Social";
+    public static final String CAT_FESTIVAL = "Festival";
+    public static final String CAT_POLYTICAL = "Polytical";
+    public static final String CAT_BIRTHDAY = "Birthday";
+    public static final String CAT_BUSINESS = "Business";
+    public static final String CAT_EDUCATIONAL = "Educational";
+
 }

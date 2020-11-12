@@ -57,17 +57,12 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
     String image,Sdownloadurl,SpostName,SpostCategory,Spostdetails,SpostId;
     private Uri filePath;
 
-    private DatabaseReference mDatabaseRefpatient;
-    private DatabaseReference mDatabase;
     private StorageReference storageReference;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser Fuser;
-    private String uid;
     DatabaseReference databaseReference;
 
     LeedRepository leedRepository;
 
-    private List<String> listcategory;
+    AppSingleton appSingleton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +77,7 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
         leedRepository = new LeedRepositoryImpl();
+        appSingleton = AppSingleton.getInstance(getContext());
 
         edtName = view.findViewById(R.id.postname);
         edtDetails = view.findViewById(R.id.description);
@@ -89,12 +85,8 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
         imgPost = view.findViewById(R.id.imgPost);
         btnAdd = view.findViewById(R.id.submit);
 
-        listcategory = new ArrayList<>();
-        listcategory.add("Select Category");
-        listcategory.add("Festival");
-        listcategory.add("Polytical");
-        listcategory.add("Birthday");
-        listcategory.add("Business");
+
+        String[] listcategory = appSingleton.getCategories();
 
         ArrayAdapter<String> occupation = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, listcategory);
