@@ -59,5 +59,6 @@ public class Constants {
     public static final String CAT_BIRTHDAY = "Birthday";
     public static final String CAT_BUSINESS = "Business";
     public static final String CAT_EDUCATIONAL = "Educational";
+    public static final String CAT_AGRICULTURE = "Agricultural";
 
 }

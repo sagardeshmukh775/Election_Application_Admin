@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity_Add_Post">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,6 +13,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/view_drop"
+            android:padding="8dp"
             android:orientation="vertical">
 
         <LinearLayout
@@ -40,7 +46,7 @@
                 android:gravity="center_horizontal"
                 android:text="POST"
                 android:textColor="@color/toolbar"
-                android:textSize="26dp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -67,6 +73,18 @@
 
                  <Spinner
                      android:id="@+id/category"
+                     style="@style/Widget.AppCompat.Spinner.Underlined"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginRight="10dp"
+                     android:background="@drawable/edittextanimation"
+                     android:padding="10dp" />
+
+                 <Spinner
+                     android:id="@+id/wardnumber"
                      style="@style/Widget.AppCompat.Spinner.Underlined"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
@@ -126,4 +144,4 @@
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

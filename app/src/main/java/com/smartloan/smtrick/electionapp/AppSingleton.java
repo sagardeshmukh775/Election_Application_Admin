@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.smartloan.smtrick.electionapp.Constants.CAT_AGRICULTURE;
 import static com.smartloan.smtrick.electionapp.Constants.CAT_BIRTHDAY;
 import static com.smartloan.smtrick.electionapp.Constants.CAT_BUSINESS;
 import static com.smartloan.smtrick.electionapp.Constants.CAT_EDUCATIONAL;
@@ -46,6 +47,10 @@ public class AppSingleton {
     }
 
     public String[] getCategories() {
-        return new String[]{"Select Category",CAT_SOCIAL, CAT_FESTIVAL, CAT_POLYTICAL, CAT_BIRTHDAY,CAT_BUSINESS,CAT_EDUCATIONAL};
+        return new String[]{"Select Category",CAT_SOCIAL,CAT_AGRICULTURE, CAT_FESTIVAL, CAT_POLYTICAL, CAT_BIRTHDAY,CAT_BUSINESS,CAT_EDUCATIONAL};
+    }
+
+    public String[] getWards() {
+        return new String[]{"Select ward","1","2","3","4","5","6","7","8","9","10","11","12","13","14"};
     }
 }

@@ -50,11 +50,10 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
 
     private EditText edtName, edtDetails;
     private Button btnAdd;
-    private Spinner spinnerCategory;
+    private Spinner spinnerCategory, spinnerWardNumber;
     private ImageView imgPost;
-//admin
     private static final int REQUEST_PICK_IMAGE = 1002;
-    String image,Sdownloadurl,SpostName,SpostCategory,Spostdetails,SpostId;
+    String image, Sdownloadurl, SpostName, SpostCategory, Spostdetails, SpostId;
     private Uri filePath;
 
     private StorageReference storageReference;
@@ -82,22 +81,33 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
         edtName = view.findViewById(R.id.postname);
         edtDetails = view.findViewById(R.id.description);
         spinnerCategory = view.findViewById(R.id.category);
+        spinnerWardNumber = view.findViewById(R.id.wardnumber);
         imgPost = view.findViewById(R.id.imgPost);
         btnAdd = view.findViewById(R.id.submit);
-
 
         String[] listcategory = appSingleton.getCategories();
 
         ArrayAdapter<String> occupation = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, listcategory);
-
         occupation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(occupation);
+
+        setWard();
 
         imgPost.setOnClickListener(this);
         btnAdd.setOnClickListener(this);
 
         return view;
+    }
+
+    private void setWard() {
+
+        String[] listward = appSingleton.getWards();
+
+        ArrayAdapter<String> ward = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listward);
+        ward.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWardNumber.setAdapter(ward);
     }
 
     @Override
@@ -112,9 +122,9 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
             SpostCategory = spinnerCategory.getSelectedItem().toString();
 
             if (TextUtils.isEmpty(SpostName)) {
-                    Toast.makeText(getContext(), "Enter post name", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                Toast.makeText(getContext(), "Enter post name", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if (TextUtils.isEmpty(Spostdetails)) {
                 Toast.makeText(getContext(), "Enter post details", Toast.LENGTH_SHORT).show();
                 return;
@@ -123,7 +133,7 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
                 Toast.makeText(getContext(), "Select post category", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (SpostCategory.equalsIgnoreCase("Select Category")){
+            if (SpostCategory.equalsIgnoreCase("Select Category")) {
                 Toast.makeText(getContext(), "Select post category", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -179,8 +189,6 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
         progressDialog.show();
 
 
-
-
         final StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_POSTS + System.currentTimeMillis() + "." + getFileExtension(filePath));
         sRef.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -202,7 +210,7 @@ public class Fragment_Add_Post extends Fragment implements View.OnClickListener 
                         leedRepository.addPost(postVO, new CallBack() {
                             @Override
                             public void onSuccess(Object object) {
-                                if (object != null){
+                                if (object != null) {
                                     Toast.makeText(getContext(), "Post added Successfully", Toast.LENGTH_SHORT).show();
                                     CleareFields();
                                 }
