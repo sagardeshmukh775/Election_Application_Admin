@@ -382,7 +382,7 @@ public class Fragment_ViewCatalogs extends Fragment {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            catalogprogress.setVisibility(View.GONE);
                         }
                     });
                 }

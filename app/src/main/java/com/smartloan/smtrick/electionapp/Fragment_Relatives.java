@@ -44,7 +44,6 @@ public class Fragment_Relatives extends Fragment {
     private RecyclerView catalogRecycler;
     private DatabaseReference mdataRefpatient;
     private ArrayList<RelationVO> catalogList;
-    private ProgressBar catalogprogress;
     private RelativesAdapter adapter;
     private EditText edtSearch;
     DatabaseReference databaseReference;
@@ -53,7 +52,6 @@ public class Fragment_Relatives extends Fragment {
     private FirebaseUser Fuser;
     private String uid;
 
-    // int[] animationList = {R.anim.layout_animation_up_to_down};
     int i = 0;
 
     ImageButton Whatsapp, Message;
@@ -68,8 +66,6 @@ public class Fragment_Relatives extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewcatalog, container, false);
 
-        // getActivity().getActionBar().setTitle("Products");
-        catalogprogress = (ProgressBar) view.findViewById(R.id.catalog_progress);
         catalogRecycler = (RecyclerView) view.findViewById(R.id.catalog_recycle);
         edtSearch = (EditText) view.findViewById(R.id.search_edit_text);
         Whatsapp = (ImageButton) view.findViewById(R.id.whatsapp);
@@ -79,7 +75,7 @@ public class Fragment_Relatives extends Fragment {
         getCurrentuserdetails();
 
         if (isNetworkAvailable()) {
-//            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+//
         } else {
             Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
@@ -120,7 +116,6 @@ public class Fragment_Relatives extends Fragment {
                 Button dialogEditButtoncancle = (Button) dialog1.findViewById(R.id.dialogButtonCancle);
                 EditText message = (EditText) dialog1.findViewById(R.id.whatsappmessage1);
 
-
                 dialogEditButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -143,7 +138,6 @@ public class Fragment_Relatives extends Fragment {
                                 }
                             }
                         }
-//                        Toast.makeText(getContext(), "Sent", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -155,9 +149,7 @@ public class Fragment_Relatives extends Fragment {
                 });
 
                 dialog1.show();
-
             }
-
 
         });
 
@@ -208,7 +200,6 @@ public class Fragment_Relatives extends Fragment {
                                 dialog1.dismiss();
                             }
                             Toast.makeText(getContext(), "Message Sent", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
@@ -221,14 +212,11 @@ public class Fragment_Relatives extends Fragment {
                 });
 
                 dialog1.show();
-
-
             }
         });
 
         return view;
     }
-
 
     private void setAdapter(final String toString) {
 
@@ -251,10 +239,7 @@ public class Fragment_Relatives extends Fragment {
 
                             catalogList.add(leedsModel);
                         }
-
-
                     }
-
                 }
 
                 serAdapter(catalogList);
@@ -265,9 +250,7 @@ public class Fragment_Relatives extends Fragment {
 
             }
         });
-
     }
-
 
     private void serAdapter(ArrayList<RelationVO> leedsModels) {
         if (leedsModels != null) {
@@ -282,7 +265,6 @@ public class Fragment_Relatives extends Fragment {
             }
         }
     }
-
 
     private void getCurrentuserdetails() {
 
@@ -319,7 +301,6 @@ public class Fragment_Relatives extends Fragment {
 
                 private void setLeeds() {
 
-                    catalogprogress.setVisibility(View.VISIBLE);
                     mdataRefpatient = FirebaseDatabase.getInstance().getReference("Relations");
                     mdataRefpatient.addValueEventListener(new ValueEventListener() {
 
@@ -335,28 +316,20 @@ public class Fragment_Relatives extends Fragment {
                             adapter = new RelativesAdapter(getActivity(), catalogList, Language);
                             //adding adapter to recyclerview
                             catalogRecycler.setAdapter(adapter);
-                            // CatalogAdapter catalogAdapter = new CatalogAdapter(catalogList);
                             catalogRecycler.setHasFixedSize(true);
                             catalogRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-                            //catalogRecycler.setAdapter(catalogAdapter);
-                            catalogprogress.setVisibility(View.GONE);
-
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
-
-
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-
                 }
             });
 

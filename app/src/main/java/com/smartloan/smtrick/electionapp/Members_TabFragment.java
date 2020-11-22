@@ -31,6 +31,7 @@ public class Members_TabFragment extends Fragment {
         }
         View view = inflater.inflate(R.layout.view_pager_tab_layout, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        viewPager.setOffscreenPageLimit(3);
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragement(new Fragment_ViewCatalogs(), "Members");
         viewPagerAdapter.addFragement(new Fragment_Relatives(), "Relatives");
