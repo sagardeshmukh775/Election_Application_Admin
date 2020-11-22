@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
         final String phoneNumber = number;
 
 
-        DatabaseReference Dref = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference Dref = FirebaseDatabase.getInstance().getReference(String.valueOf("Admin"));
         Dref.orderByChild("mobileNumber").equalTo(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
