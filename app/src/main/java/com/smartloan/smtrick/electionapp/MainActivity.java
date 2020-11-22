@@ -179,8 +179,10 @@ public class MainActivity extends AppCompatActivity
                         Userid = usersnapshot.child("userid").getValue(String.class);
                         username.setText(acctname);
                         userEmail.setText(acctemail);
-                        if (Language.equalsIgnoreCase("Marathi")){
-                            setLanguage();
+                        if (Language != null) {
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage();
+                            }
                         }
                     }
                 }

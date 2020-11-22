@@ -161,10 +161,12 @@ public class Request_Doctors_Fragment extends Fragment {
     }
 
     private void setLanguage(String lan) {
-        if (lan.equalsIgnoreCase("marathi")) {
-            marathi.setChecked(true);
-        } else if (lan.equalsIgnoreCase("english")) {
-            english.setChecked(true);
+        if (lan != null) {
+            if (lan.equalsIgnoreCase("marathi")) {
+                marathi.setChecked(true);
+            } else if (lan.equalsIgnoreCase("english")) {
+                english.setChecked(true);
+            }
         }
     }
 

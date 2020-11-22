@@ -66,12 +66,12 @@ public class Member_Registration_Activity extends AppCompatActivity implements V
     private CheckBox CHmemberrelation;
 
     private String Smemberward, Smembername, Smemberbirthdate, Smembereducation, Smemberoccupation, Smembertemaddress, Smemberpermanentaddress,
-            Smembercurrentaddress, Smembercontact, Scountrycode, Smembercast, Smembergender,SmemberZone, Smembervoteridnumber, Smemberrelation, Smemberid, Sleedid,
+            Smembercurrentaddress, Smembercontact, Scountrycode, Smembercast, Smembergender, SmemberZone, Smembervoteridnumber, Smemberrelation, Smemberid, Sleedid,
             Smemberage;
     String Sdownloadurl;
 
-    private RadioGroup groupGender,groupZone;
-    private RadioButton Rmale, Rfemale, Rgender,ROrenge,RGreen,RRed,RZone;
+    private RadioGroup groupGender, groupZone;
+    private RadioButton Rmale, Rfemale, Rgender, ROrenge, RGreen, RRed, RZone;
 
     private DatabaseReference mDatabaseRefpatient;
     private DatabaseReference mDatabase;
@@ -391,7 +391,7 @@ public class Member_Registration_Activity extends AppCompatActivity implements V
 
                                 MemberVO memberdetails = new MemberVO(Smemberward, Smembername, Smemberbirthdate, Smembereducation, Smemberoccupation, Smembertemaddress, Smemberpermanentaddress,
                                         Smembercurrentaddress, Smembercontact, Smembercast, Smembergender, Smembervoteridnumber, Smemberrelation, Smemberid,
-                                        Sleedid, Sdownloadurl, Smemberage,SmemberZone);
+                                        Sleedid, Sdownloadurl, Smemberage, SmemberZone);
 
                                 mDatabaseRefpatient.child(Sleedid).setValue(memberdetails);
 
@@ -444,11 +444,12 @@ public class Member_Registration_Activity extends AppCompatActivity implements V
                     for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
 
                         Language = usersnapshot.child("language").getValue(String.class);
-
-                        if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage("marathi");
-                        } else if (Language.equalsIgnoreCase("English")) {
-                            setLanguage("english");
+                        if (Language != null) {
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage("marathi");
+                            } else if (Language.equalsIgnoreCase("English")) {
+                                setLanguage("english");
+                            }
                         }
                     }
                 }

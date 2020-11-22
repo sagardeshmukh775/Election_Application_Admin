@@ -160,13 +160,14 @@ public class Fragment_Reports extends Fragment {
                     for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
 //
                         Language = usersnapshot.child("language").getValue(String.class);
-//
-                        if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage("marathi");
+                        if (Language != null) {
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage("marathi");
 
-                        } else if (Language.equalsIgnoreCase("English")) {
-                            setLanguage("english");
+                            } else if (Language.equalsIgnoreCase("English")) {
+                                setLanguage("english");
 
+                            }
                         }
                     }
                 }

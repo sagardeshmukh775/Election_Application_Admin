@@ -93,12 +93,14 @@ public class Fragment_ViewCatalogs extends Fragment {
                         Manifest.permission.SEND_SMS,
                         Manifest.permission.READ_CONTACTS
                 ).withListener(new MultiplePermissionsListener() {
-            @Override public void onPermissionsChecked(MultiplePermissionsReport report) {/* ... */}
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {/* ... */}
 
-            @Override public void onPermissionRationaleShouldBeShown(List<com.karumi.dexter.listener.PermissionRequest> list, PermissionToken permissionToken) {/* ... */}
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<com.karumi.dexter.listener.PermissionRequest> list, PermissionToken permissionToken) {/* ... */}
         }).check();
 
-        if(!isAccessibilityOn(getContext())){
+        if (!isAccessibilityOn(getContext())) {
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -146,8 +148,8 @@ public class Fragment_ViewCatalogs extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        MySMSservice.startActionWHATSAPP(getContext(),message.getText().toString(),
-                                "1",catalogList,true);
+                        MySMSservice.startActionWHATSAPP(getContext(), message.getText().toString(),
+                                "1", catalogList, true);
 
 
 //                        for (int j = 0; j < catalogList.size(); j++) {
@@ -332,13 +334,14 @@ public class Fragment_ViewCatalogs extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
-
-                        Language = usersnapshot.child("language").getValue(String.class);
-                        if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage();
-                        } else if (Language.equalsIgnoreCase("English")) {
-                            edtSearch.setHint("Search Text...");
-                            setLeeds();
+                        if (Language != null) {
+                            Language = usersnapshot.child("language").getValue(String.class);
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage();
+                            } else if (Language.equalsIgnoreCase("English")) {
+                                edtSearch.setHint("Search Text...");
+                                setLeeds();
+                            }
                         }
                     }
                 }
@@ -407,21 +410,22 @@ public class Fragment_ViewCatalogs extends Fragment {
 
     private boolean isAccessibilityOn(Context context) {
         int accessibilityEnabled = 0;
-        final String service = context.getPackageName () + "/" + WhatAppAccessibilityService.class.getCanonicalName ();
+        final String service = context.getPackageName() + "/" + WhatAppAccessibilityService.class.getCanonicalName();
         try {
-            accessibilityEnabled = Settings.Secure.getInt (context.getApplicationContext ().getContentResolver (), Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (Settings.SettingNotFoundException ignored) {  }
+            accessibilityEnabled = Settings.Secure.getInt(context.getApplicationContext().getContentResolver(), Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException ignored) {
+        }
 
-        TextUtils.SimpleStringSplitter colonSplitter = new TextUtils.SimpleStringSplitter (':');
+        TextUtils.SimpleStringSplitter colonSplitter = new TextUtils.SimpleStringSplitter(':');
 
         if (accessibilityEnabled == 1) {
-            String settingValue = Settings.Secure.getString (context.getApplicationContext ().getContentResolver (), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            String settingValue = Settings.Secure.getString(context.getApplicationContext().getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (settingValue != null) {
-                colonSplitter.setString (settingValue);
-                while (colonSplitter.hasNext ()) {
-                    String accessibilityService = colonSplitter.next ();
+                colonSplitter.setString(settingValue);
+                while (colonSplitter.hasNext()) {
+                    String accessibilityService = colonSplitter.next();
 
-                    if (accessibilityService.equalsIgnoreCase (service)) {
+                    if (accessibilityService.equalsIgnoreCase(service)) {
                         return true;
                     }
                 }

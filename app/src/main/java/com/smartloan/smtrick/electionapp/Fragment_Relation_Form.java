@@ -146,11 +146,12 @@ public class Fragment_Relation_Form extends Fragment implements View.OnClickList
                     for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
 
                         Language = usersnapshot.child("language").getValue(String.class);
-
-                        if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage("marathi");
-                        }else if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage("english");
+                        if (Language != null) {
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage("marathi");
+                            } else if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage("english");
+                            }
                         }
                     }
                 }

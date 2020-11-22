@@ -56,7 +56,7 @@ public class Fragment_Relatives extends Fragment {
     // int[] animationList = {R.anim.layout_animation_up_to_down};
     int i = 0;
 
-    ImageButton Whatsapp,Message;
+    ImageButton Whatsapp, Message;
     String number;
 
     @Override
@@ -78,9 +78,9 @@ public class Fragment_Relatives extends Fragment {
 
         getCurrentuserdetails();
 
-        if (isNetworkAvailable()){
+        if (isNetworkAvailable()) {
 //            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -121,11 +121,10 @@ public class Fragment_Relatives extends Fragment {
                 EditText message = (EditText) dialog1.findViewById(R.id.whatsappmessage1);
 
 
-
                 dialogEditButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        for (int j = 0; j<catalogList.size(); j++) {
+                        for (int j = 0; j < catalogList.size(); j++) {
                             number = catalogList.get(j).getRelationcontact();
                             if (number != null) {
                                 PackageManager packageManager = getActivity().getPackageManager();
@@ -133,13 +132,13 @@ public class Fragment_Relatives extends Fragment {
 
                                 try {
                                     String message1 = message.getText().toString();
-                                    String url = "https://api.whatsapp.com/send?phone="+ number +"&text=" + URLEncoder.encode(message1, "UTF-8");
+                                    String url = "https://api.whatsapp.com/send?phone=" + number + "&text=" + URLEncoder.encode(message1, "UTF-8");
                                     i.setPackage("com.whatsapp");
                                     i.setData(Uri.parse(url));
                                     if (i.resolveActivity(packageManager) != null) {
                                         getActivity().startActivity(i);
                                     }
-                                } catch (Exception e){
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -185,7 +184,8 @@ public class Fragment_Relatives extends Fragment {
                                     sendMySMS();
                                 }
                             }
-                        }catch (Exception e){}
+                        } catch (Exception e) {
+                        }
                     }
 
                     private void sendMySMS() {
@@ -221,7 +221,6 @@ public class Fragment_Relatives extends Fragment {
                 });
 
                 dialog1.show();
-
 
 
             }
@@ -301,12 +300,13 @@ public class Fragment_Relatives extends Fragment {
                     for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
 //
                         Language = usersnapshot.child("language").getValue(String.class);
-//
-                        if (Language.equalsIgnoreCase("Marathi")) {
-                            setLanguage();
-                        }else if (Language.equalsIgnoreCase("English")){
-                            edtSearch.setHint("Search Text...");
-                            setLeeds();
+                        if (Language != null) {
+                            if (Language.equalsIgnoreCase("Marathi")) {
+                                setLanguage();
+                            } else if (Language.equalsIgnoreCase("English")) {
+                                edtSearch.setHint("Search Text...");
+                                setLeeds();
+                            }
                         }
                     }
                 }
@@ -363,6 +363,7 @@ public class Fragment_Relatives extends Fragment {
         } catch (Exception e) {
         }
     }
+
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
