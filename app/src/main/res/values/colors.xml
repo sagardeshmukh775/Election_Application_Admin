@@ -21,11 +21,18 @@
     <color name="album_title">#4c4c4c</color>
     <color name="backgroundcolor">#e0f2ec</color>
 
-    <item type="color" name="hederbackground">#ec6f70</item>
+    <item type="color" name="hederbackground">#1DD5B9</item>
     <color name="mainTextColor">#343d43</color>
 
     <color name="toolbar">#1DD5B9</color>
     <color name="whatsapp">#25D366</color>
 
     <color name="colorAccentLight">#ffa500</color>
+    <color name="Link_color">#346AF0</color>
+    <item type="color" name="whitetextcolor">#ffffff</item>
+    <color name="Black">#000000</color>
+
+    <color name="orenge">#FF4500</color>
+    <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
 </resources>

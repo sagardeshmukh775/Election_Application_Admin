@@ -86,7 +86,7 @@ public class ActiveUserAdapter extends RecyclerView.Adapter<ActiveUserAdapter.Vi
             public void onClick(View view) {
 
                 mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("users").child(users.getUserid()).child("status").setValue("REQUEST");
+                mDatabase.child("users").child(users.getUserId()).child("status").setValue("REQUEST");
                 notifyDataSetChanged();
             }
         });

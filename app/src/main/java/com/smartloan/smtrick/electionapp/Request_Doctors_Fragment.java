@@ -85,13 +85,13 @@ public class Request_Doctors_Fragment extends Fragment {
                         if (gender.getText().toString().equalsIgnoreCase("Marathi")) {
                             user.setName(acctname);
                             user.setEmail(acctemail);
-                            user.setUserid(Userid);
+                            user.setUserId(Userid);
                             user.setLanguage("Marathi");
                             updateData(user);
                         } else if (gender.getText().toString().equalsIgnoreCase("English")) {
                             user.setName(acctname);
                             user.setEmail(acctemail);
-                            user.setUserid(Userid);
+                            user.setUserId(Userid);
                             user.setLanguage("English");
                             updateData(user);
                         }
@@ -104,7 +104,7 @@ public class Request_Doctors_Fragment extends Fragment {
     }
 
     private void updateData(Users user1) {
-        updateLeed(user1.getUserid(), user1.getLeedStatusMap());
+        updateLeed(user1.getUserId(), user1.getLeedStatusMap());
     }
 
     private void updateLeed(String leedId, Map leedsMap) {

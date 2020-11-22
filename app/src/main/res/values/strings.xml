@@ -19,6 +19,7 @@
     <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
+    <string name="hint_mobile">Mobile Number</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
@@ -94,7 +95,20 @@ We also supply an extensive range of quality prefinished engineered flooring, co
 
     <string name="mem_update">UPDATE</string>
 
-    <color name="orenge">#FF4500</color>
-    <color name="green">#008000</color>
-    <color name="red">#FF0000</color>
+    <string name="username">Username</string>
+    <string name="phone">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login</string>
+
+    <string name="MOBILE_NUMBER_SHOULD_NOT_BE_EMPTY">Mobile number should not be empty.</string>
+    <string name="SIGNING_IN">Signing in&#8230;</string>
+    <string name="INVALID_MOBILE_NUMBER">Invalid mobile number.</string>
+    <string name="PASSWORD_SHOULD_NOT_BE_EMPTY">Password should not be empty.</string>
+    <string name="registration_fail">Registration fail, please try again.</string>
+
+    <string name="loading">Loading&#8230;</string>
+    <string name="PLEASE_WAIT">Please Wait&#8230;</string>
+    <string name="login_fail_try_again">Login fail, please try again with correct login details.</string>
+
 </resources>
