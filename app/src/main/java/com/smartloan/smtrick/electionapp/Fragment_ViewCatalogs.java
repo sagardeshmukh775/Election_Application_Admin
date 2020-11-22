@@ -78,6 +78,8 @@ public class Fragment_ViewCatalogs extends Fragment {
         // getActivity().getActionBar().setTitle("Products");
         catalogprogress = (ProgressBar) view.findViewById(R.id.catalog_progress);
         catalogRecycler = (RecyclerView) view.findViewById(R.id.catalog_recycle);
+        catalogRecycler.setHasFixedSize(true);
+        catalogRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         edtSearch = (EditText) view.findViewById(R.id.search_edit_text);
         Whatsapp = (ImageButton) view.findViewById(R.id.whatsapp);
         Message = (ImageButton) view.findViewById(R.id.message);
@@ -242,6 +244,7 @@ public class Fragment_ViewCatalogs extends Fragment {
     }
 
     private void readMembers() {
+        catalogprogress.setVisibility(View.VISIBLE);
         catalogList.clear();
         catalogRecycler.removeAllViews();
         leedRepository.readMembers(new CallBack() {
@@ -250,12 +253,13 @@ public class Fragment_ViewCatalogs extends Fragment {
                 if (object != null){
                     catalogList = (ArrayList<MemberVO>) object;
                     serAdapter(catalogList);
+                    catalogprogress.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void onError(Object object) {
-
+                catalogprogress.setVisibility(View.GONE);
             }
         });
     }

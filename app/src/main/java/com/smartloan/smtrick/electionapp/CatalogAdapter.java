@@ -54,12 +54,13 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
     @Override
     public void onBindViewHolder(final CatalogAdapter.ViewHolder holder, final int position) {
         //String pname = list.get(position);
-
-        if (Language.equalsIgnoreCase("Marathi")) {
-            holder.name1.setText(R.string.register_membername);
-            holder.date.setText(R.string.address);
-            holder.cast.setText(R.string.card_contact);
-            holder.contact.setText(R.string.register_wardno);
+        if (Language  != null){
+            if (Language.equalsIgnoreCase("Marathi")) {
+                holder.name1.setText(R.string.register_membername);
+                holder.date.setText(R.string.address);
+                holder.cast.setText(R.string.card_contact);
+                holder.contact.setText(R.string.register_wardno);
+            }
         }
         final MemberVO pveo = list.get(position);
 
@@ -106,27 +107,28 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
                     private void sendMySMS() {
                         try {
 
-                        String phone = pveo.getMembercontact();
-                        String message1 = message.getText().toString();
+                            String phone = pveo.getMembercontact();
+                            String message1 = message.getText().toString();
 
-                        //Check if the phoneNumber is empty
-                        if (number.isEmpty() || message1.isEmpty()) {
-                            Toast.makeText(holder.cardView.getContext(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
-                        } else {
+                            //Check if the phoneNumber is empty
+                            if (number.isEmpty() || message1.isEmpty()) {
+                                Toast.makeText(holder.cardView.getContext(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+                            } else {
 
-                            SmsManager sms = SmsManager.getDefault();
-                            // if message length is too long messages are divided
-                            List<String> messages = sms.divideMessage(message1);
-                            for (String msg : messages) {
+                                SmsManager sms = SmsManager.getDefault();
+                                // if message length is too long messages are divided
+                                List<String> messages = sms.divideMessage(message1);
+                                for (String msg : messages) {
 
-                                PendingIntent sentIntent = PendingIntent.getBroadcast(holder.cardView.getContext(), 0, new Intent("SMS_SENT"), 0);
-                                PendingIntent deliveredIntent = PendingIntent.getBroadcast(holder.cardView.getContext(), 0, new Intent("SMS_DELIVERED"), 0);
-                                sms.sendTextMessage(phone, null, msg, sentIntent, deliveredIntent);
-                                Toast.makeText(holder.cardView.getContext(), "Message Sent", Toast.LENGTH_SHORT).show();
-                                dialog1.dismiss();
+                                    PendingIntent sentIntent = PendingIntent.getBroadcast(holder.cardView.getContext(), 0, new Intent("SMS_SENT"), 0);
+                                    PendingIntent deliveredIntent = PendingIntent.getBroadcast(holder.cardView.getContext(), 0, new Intent("SMS_DELIVERED"), 0);
+                                    sms.sendTextMessage(phone, null, msg, sentIntent, deliveredIntent);
+                                    Toast.makeText(holder.cardView.getContext(), "Message Sent", Toast.LENGTH_SHORT).show();
+                                    dialog1.dismiss();
+                                }
                             }
+                        } catch (Exception e) {
                         }
-                        }catch (Exception e){}
                     }
                 });
 
