@@ -38,7 +38,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     TextView txtlogin, txttc;
     Button btlogin, btnotp;
-    EditText etname, etmobile, etPassword, etotp,etEmail;
+    EditText  etmobile, etPassword, etotp;
     private UserRepository userRepository;
     private ProgressDialogClass progressDialogClass;
     private AppSharedPreference appSharedPreference;
@@ -58,11 +58,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         btlogin = (Button) findViewById(R.id.buttonsubmit);
         btnotp = (Button) findViewById(R.id.buttongenerateotp);
-        etname = (EditText) findViewById(R.id.edittextname);
         etmobile = (EditText) findViewById(R.id.edittextmobile);
         etPassword = (EditText) findViewById(R.id.edittextpassword);
         etotp = (EditText) findViewById(R.id.edittextenterotp);
-        etEmail = (EditText) findViewById(R.id.edittextemail);
 
         txttc = (TextView) findViewById(R.id.txttermsandconditions);
         txtlogin = (TextView) findViewById(R.id.textViewLogin);
@@ -106,7 +104,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     private void setTouchListner() {
 
-        etname.setOnTouchListener(this);
         etmobile.setOnTouchListener(this);
         etotp.setOnTouchListener(this);
     }
@@ -129,10 +126,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         Users user = new Users();
         user.setUserId(Constants.USER_TABLE_REF.push().getKey());
-        user.setName(etname.getText().toString());
         user.setMobileNumber(etmobile.getText().toString());
         user.setPassword(etPassword.getText().toString());
-        user.setEmail(etEmail.getText().toString());
         user.setRegId(Utility.generateAgentId(CUSTOMER_PREFIX));
 
         return user;
@@ -142,11 +137,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String validationMessage;
         boolean isValid = true;
         try {
-            if (Utility.isEmptyOrNull(user.getName())) {
-                validationMessage = "User Nmae Should not be empty";
-                etname.setError(validationMessage);
-                isValid = false;
-            }
+
             if (Utility.isEmptyOrNull(user.getMobileNumber())) {
                 validationMessage = getString(R.string.MOBILE_NUMBER_SHOULD_NOT_BE_EMPTY);
                 etmobile.setError(validationMessage);

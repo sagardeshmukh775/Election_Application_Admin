@@ -17,46 +17,6 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/Black"
-                android:textColorHint="@color/Black"
-                app:passwordToggleTint="@color/Black">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edittextname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_border"
-                    android:hint="@string/username"
-                    android:inputType="textPersonName"
-                    android:padding="10sp"
-                    android:textColor="@color/hederbackground"
-                    android:textColorHint="@color/hederbackground" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/Black"
-                android:textColorHint="@color/Black"
-                app:passwordToggleTint="@color/Black">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edittextemail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_border"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:padding="10sp"
-                    android:textColor="@color/hederbackground"
-                    android:textColorHint="@color/hederbackground" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

@@ -57,6 +57,8 @@ public class Fragment_ViewCatalogs extends Fragment {
     private FirebaseUser Fuser;
     private String uid;
 
+    LeedRepository leedRepository;
+
     // int[] animationList = {R.anim.layout_animation_up_to_down};
     int i = 0;
 
@@ -72,6 +74,7 @@ public class Fragment_ViewCatalogs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewcatalog, container, false);
 
+        leedRepository = new LeedRepositoryImpl();
         // getActivity().getActionBar().setTitle("Products");
         catalogprogress = (ProgressBar) view.findViewById(R.id.catalog_progress);
         catalogRecycler = (RecyclerView) view.findViewById(R.id.catalog_recycle);
@@ -81,6 +84,7 @@ public class Fragment_ViewCatalogs extends Fragment {
         catalogList = new ArrayList<>();
 
         getCurrentuserdetails();
+        readMembers();
 
         if (isNetworkAvailable()) {
 //            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
@@ -150,28 +154,6 @@ public class Fragment_ViewCatalogs extends Fragment {
 
                         MySMSservice.startActionWHATSAPP(getContext(), message.getText().toString(),
                                 "1", catalogList, true);
-
-
-//                        for (int j = 0; j < catalogList.size(); j++) {
-//                            number = catalogList.get(j).getMembercontact();
-//                            if (number != null) {
-//                                PackageManager packageManager = getActivity().getPackageManager();
-//                                Intent i = new Intent(Intent.ACTION_VIEW);
-//
-//                                try {
-//                                    String message1 = message.getText().toString();
-//                                    String url = "https://api.whatsapp.com/send?phone=" + number + "&text=" + URLEncoder.encode(message1, "UTF-8");
-//                                    i.setPackage("com.whatsapp");
-//                                    i.setData(Uri.parse(url));
-//                                    if (i.resolveActivity(packageManager) != null) {
-//                                        getActivity().startActivity(i);
-//                                    }
-//                                } catch (Exception e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }
-//                        Toast.makeText(getContext(), "Sent", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -259,6 +241,25 @@ public class Fragment_ViewCatalogs extends Fragment {
         return view;
     }
 
+    private void readMembers() {
+        catalogList.clear();
+        catalogRecycler.removeAllViews();
+        leedRepository.readMembers(new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                if (object != null){
+                    catalogList = (ArrayList<MemberVO>) object;
+                    serAdapter(catalogList);
+                }
+            }
+
+            @Override
+            public void onError(Object object) {
+
+            }
+        });
+    }
+
 
     private void setAdapter(final String toString) {
 
@@ -287,10 +288,8 @@ public class Fragment_ViewCatalogs extends Fragment {
 
                         } else if (leedsModel.getMemberage().toLowerCase().contains(toString)) {
                             catalogList.add(leedsModel);
-
                         }
                     }
-
                 }
 
                 serAdapter(catalogList);
@@ -301,9 +300,7 @@ public class Fragment_ViewCatalogs extends Fragment {
 
             }
         });
-
     }
-
 
     private void serAdapter(ArrayList<MemberVO> leedsModels) {
         if (leedsModels != null) {
@@ -377,7 +374,6 @@ public class Fragment_ViewCatalogs extends Fragment {
                                 catalogprogress.setVisibility(View.GONE);
                             } catch (Exception e) {
                             }
-
                         }
 
                         @Override
@@ -385,8 +381,6 @@ public class Fragment_ViewCatalogs extends Fragment {
 
                         }
                     });
-
-
                 }
 
                 @Override

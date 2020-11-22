@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 
 public class UserRepositoryImpl extends FirebaseTemplateRepository implements UserRepository {
     private Activity _activity;
@@ -127,5 +129,8 @@ public class UserRepositoryImpl extends FirebaseTemplateRepository implements Us
             }
         });
     }
+
+
+
 
 }

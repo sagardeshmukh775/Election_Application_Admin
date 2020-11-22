@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     private String uid;
     private FirebaseUser Fuser;
     private DatabaseReference databaseReference;
+    AppSharedPreference appSharedPreference;
 
     private TextView userEmail;
     private TextView username;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
         leedRepository = new LeedRepositoryImpl();
+        appSharedPreference = new AppSharedPreference(this);
         user = new Users();
         // NOTE : Just remove the fab button
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -252,6 +254,7 @@ public class MainActivity extends AppCompatActivity
             // clearDataWithSignOut();
             FirebaseAuth.getInstance().signOut();
             finish();
+            appSharedPreference.clear();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
         }
