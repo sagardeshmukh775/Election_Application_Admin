@@ -13,5 +13,5 @@ public interface UserRepository {
 
     void createAdminData(final Users userModel, final CallBack callback);
 
-
+    void readAdmin(final String userid, final CallBack callback);
 }

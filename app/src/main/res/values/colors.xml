@@ -35,4 +35,6 @@
     <color name="orenge">#FF4500</color>
     <color name="green">#008000</color>
     <color name="red">#FF0000</color>
+
+    <color name="light_gray">#DCDCDC</color>
 </resources>

@@ -131,6 +131,35 @@ public class UserRepositoryImpl extends FirebaseTemplateRepository implements Us
     }
 
 
+    @Override
+    public void readAdmin(String userId, final CallBack callBack) {
+        final Query query = Constants.Admin_TABLE_REF.child(userId);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot != null) {
+                    if (dataSnapshot.getValue() != null) {
+                        try {
+                            if (dataSnapshot.hasChildren()) {
+                                callBack.onSuccess(dataSnapshot.getValue(Users.class));
+                            } else {
+                                callBack.onError(null);
+                            }
+                        } catch (Exception e) {
+                            ExceptionUtil.logException(e);
+                        }
+                    } else
+                        callBack.onError(null);
+                } else
+                    callBack.onError(null);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callBack.onError(databaseError);
+            }
+        });
+    }
 
 
 }

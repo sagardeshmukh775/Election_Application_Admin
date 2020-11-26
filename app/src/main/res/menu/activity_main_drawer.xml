@@ -6,33 +6,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/memberregistration"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/add"
             android:title="Register Member"/>
         <item
             android:id="@+id/relationform"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/add"
             android:title="Relation Form"/>
         <item
             android:id="@+id/viewmembers"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/members"
             android:title="Members"/>
         <item
             android:id="@+id/addpost"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/add_post"
             android:title="Add Post"/>
         <item
             android:id="@+id/reports"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/report"
             android:title="Reports" />
+
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
 
         <item
             android:id="@+id/settings"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/settings"
             android:title="Settings" />
 
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/logout"
             android:title="Log Out" />
     </group>
 

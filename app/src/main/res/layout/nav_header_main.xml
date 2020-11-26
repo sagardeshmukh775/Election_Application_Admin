@@ -3,29 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@color/toolbar"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_marginBottom="40dp"
+    android:layout_marginTop="10dp"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/memberImage"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:civ_border_color="@color/white"
+        android:src="@drawable/user1"
+        android:layout_gravity="center_horizontal"
+        app:civ_border_width="3dp" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/textViewuserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:textColor="@color/white"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="User Name"
-        />
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/mainTextColor"
+        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/useremail"
+        android:id="@+id/textViewMobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:text="Email id"
-        android:textColor="@color/white"
-        />
+        android:textColor="@color/mainTextColor"
+        android:textSize="14dp"
+        android:layout_gravity="center_horizontal"
+        android:text="" />
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.squareup.picasso.Picasso;
 
 
 public class MainActivity extends AppCompatActivity
@@ -49,14 +51,17 @@ public class MainActivity extends AppCompatActivity
     private FirebaseUser Fuser;
     private DatabaseReference databaseReference;
     AppSharedPreference appSharedPreference;
+    UserRepository userRepository;
+    ProgressDialogClass progressDialog;
 
     private TextView userEmail;
     private TextView username;
-    String Language,Userid,acctemail,acctname;
+    private ImageView imgProfile;
+    String Language, Userid, acctemail, acctname;
     private Menu top_menu;
     Users user;
     LeedRepository leedRepository;
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +71,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (isNetworkAvailable()){
+        if (isNetworkAvailable()) {
 //            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
         leedRepository = new LeedRepositoryImpl();
         appSharedPreference = new AppSharedPreference(this);
+        userRepository = new UserRepositoryImpl();
+        progressDialog = new ProgressDialogClass(this);
         user = new Users();
         // NOTE : Just remove the fab button
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -81,9 +88,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         Boolean per = isStoragePermissionGranted();
-        if (per){
+        if (per) {
             //   Toast.makeText(this, "Storage Premission Granted", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(this, "Storage Premission Required", Toast.LENGTH_SHORT).show();
         }
 
@@ -92,14 +99,13 @@ public class MainActivity extends AppCompatActivity
         //NOTE:  Checks first item in the navigation drawer initially
         navigationView.setCheckedItem(R.id.memberregistration);
         View headerview = navigationView.getHeaderView(0);
-        username = (TextView) headerview.findViewById(R.id.username);
-        userEmail = (TextView) headerview.findViewById(R.id.useremail);
+        username = (TextView) headerview.findViewById(R.id.textViewuserName);
+        userEmail = (TextView) headerview.findViewById(R.id.textViewMobile);
+        imgProfile = (ImageView) headerview.findViewById(R.id.memberImage);
 
         FirebaseMessaging.getInstance().subscribeToTopic("Products");
 
         getCurrentuserdetails();
-
-        //setMenuTitles();
 
         //NOTE:  Open fragment1 initially.
         selectedFragement = new Members_TabFragment();
@@ -133,7 +139,7 @@ public class MainActivity extends AppCompatActivity
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
             }
@@ -144,7 +150,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_SEND_SMS: {
                 if (grantResults.length > 0
@@ -163,46 +169,25 @@ public class MainActivity extends AppCompatActivity
 
     private void getCurrentuserdetails() {
 
-        try {
-            firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog.showDialog(getString(R.string.loading), getString(R.string.PLEASE_WAIT));
+        userRepository.readAdmin(appSharedPreference.getUserId(), new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                if (object != null) {
+                    user = (Users) object;
 
-            Fuser = firebaseAuth.getCurrentUser();
-            uid = Fuser.getUid();
-            uid = Fuser.getDisplayName();
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    username.setText(user.getMobileNumber());
+                    Picasso.with(MainActivity.this).load(user.getProfileImage()).placeholder(R.drawable.user1).into(imgProfile);
 
-                    for (DataSnapshot usersnapshot : dataSnapshot.getChildren()) {
-                        acctname = usersnapshot.child("name").getValue(String.class);
-                        acctemail = usersnapshot.child("email").getValue(String.class);
-                        Language = usersnapshot.child("language").getValue(String.class);
-                        Userid = usersnapshot.child("userid").getValue(String.class);
-                        username.setText(acctname);
-                        userEmail.setText(acctemail);
-                        if (Language != null) {
-                            if (Language.equalsIgnoreCase("Marathi")) {
-                                setLanguage();
-                            }
-                        }
-                    }
+                    progressDialog.dismissDialog();
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onError(Object object) {
 
-                    Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-        } catch (Exception e) {
-        }
-    }
-
-    private void setLanguage() {
-
+            }
+        });
     }
 
     @Override
@@ -232,7 +217,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,
                     new Fragment_Relation_Form()).commit();
 
-        }else if (id == R.id.viewmembers) {
+        } else if (id == R.id.viewmembers) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,
                     new Members_TabFragment()).commit();
@@ -245,11 +230,10 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,
                     new Fragment_Add_Post()).commit();
 
-        }else if (id == R.id.settings) {
+        } else if (id == R.id.settings) {
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,
                     new Request_Doctors_Fragment()).commit();
-        }
-        else if (id == R.id.logout) {
+        } else if (id == R.id.logout) {
 
             // clearDataWithSignOut();
             FirebaseAuth.getInstance().signOut();
